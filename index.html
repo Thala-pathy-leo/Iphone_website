@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>iPhone Guide – Explore · Compare · Price</title>
+<meta name="description" content="Explore iPhones across generations, compare their features, and find one that feels right for you.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#121315; --bg-deep:#0d0e10; --surface:#1f2022; --surface-low:#1b1c1e; --surface-mid:#292a2c; --surface-high:#343537;
+  --text:#e3e2e5; --muted:#c1c6d6; --dim:#8b919f; --outline:#414753;
+  --primary:#0071e3; --accent:#abc7ff; --accent-2:#a3c9ff; --glow:#2193fb; --on-primary:#fcfbff;
+  --sans:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --serif:"Liberation Serif","Times New Roman",Times,serif;
+  --maxw:1360px; --gutter:48px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:96px}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-size:15px;line-height:24px;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;padding:0}
+h1,h2,h3,h4,p{margin:0}
+svg.i{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding-inline:var(--gutter)}
+.serif{font-family:var(--serif);letter-spacing:-.26px}
+.eyebrow{font-size:11px;line-height:14px;font-weight:600;letter-spacing:.55px;text-transform:uppercase;color:var(--accent)}
+.h2{font-size:44px;line-height:52px;font-weight:600;letter-spacing:-1.1px}
+.lead{font-size:15px;line-height:24.38px;color:var(--muted)}
+.small{font-size:13px;line-height:18px;letter-spacing:.065px}
+.pill{display:inline-flex;align-items:center;gap:4px;padding:4px 8px;border-radius:9999px;background:var(--surface-mid)}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:4px;border-radius:9999px;padding:4px 16px;font-size:13px;line-height:18px;letter-spacing:.065px;transition:filter .15s,background .15s}
+.btn-primary{background:var(--primary);color:var(--on-primary)}
+.btn-primary:hover{filter:brightness(1.12)}
+.btn-ghost{background:var(--surface-high);color:var(--text)}
+.btn-ghost:hover{background:#3e3f41}
+.btn-lg{padding:8px 24px;font-size:15px;line-height:22px;letter-spacing:0}
+
+/* header */
+.site-header{position:sticky;top:0;z-index:50;background:rgba(18,19,21,.8);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);box-shadow:0 1px 12px rgba(0,0,0,.45)}
+.site-header .bar{height:80px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:16px}
+.brand img{width:32px;height:32px}
+.brand b{display:block;font-size:18px;line-height:18px;font-weight:600;letter-spacing:-.45px}
+.brand small{display:block;padding-top:4px;font-size:12px;line-height:16px;color:var(--muted);max-width:110px}
+.nav{display:flex;align-items:center;padding:4px;border-radius:9999px;background:rgba(13,14,16,.6)}
+.nav a{padding:4px 16px;border-radius:9999px;font-size:13px;line-height:18px;letter-spacing:.065px;color:var(--muted);white-space:nowrap;transition:color .15s,background .15s}
+.nav a:hover{color:var(--text)}
+.nav a.active{background:var(--surface-mid);color:var(--text);font-size:15px;line-height:22px;letter-spacing:0;box-shadow:inset 0 2px 4px rgba(0,0,0,.05)}
+.actions{display:flex;align-items:center;gap:16px}
+.region{display:inline-flex;align-items:center;gap:4px;padding:4px 8px;border-radius:9999px;background:var(--surface-low);font-family:var(--serif);font-size:13px;line-height:16px;letter-spacing:-.26px;color:var(--muted);box-shadow:0 1px 1px rgba(0,0,0,.05);white-space:nowrap}
+.region i{width:8px;height:8px;border-radius:50%;background:var(--accent)}
+.avatar{width:32px;height:32px;border-radius:50%;background:var(--accent);color:#06274d;display:grid;place-items:center;font-size:14px}
+.header-cta{box-shadow:0 4px 8px rgba(0,113,227,.35)}
+.menu-btn{display:none;width:40px;height:40px;border-radius:50%;background:var(--surface-mid);place-items:center;font-size:20px}
+
+/* hero */
+.hero{position:relative;padding:40px 0;overflow:hidden}
+.hero .glow-a{position:absolute;left:50%;top:-160px;width:720px;height:480px;max-width:100%;transform:translateX(-50%);background:rgba(0,113,227,.15);filter:blur(64px);opacity:.7;border-radius:9999px;pointer-events:none}
+.hero .glow-b{position:absolute;right:-80px;top:33.33%;bottom:29.09%;width:420px;background:rgba(33,147,251,.1);filter:blur(55px);border-radius:9999px;pointer-events:none}
+.hero .inner{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center}
+.badge{display:inline-flex;align-items:center;gap:4px;padding:4px 16px;border-radius:9999px;background:rgba(41,42,44,.9);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);box-shadow:0 1px 2px rgba(0,0,0,.05);color:var(--accent);font-size:11px;line-height:14px;font-weight:600;letter-spacing:.55px;text-transform:uppercase;margin-bottom:16px}
+.ping{position:relative;display:inline-block;width:8px;height:8px;margin-right:4px}
+.ping::before,.ping::after{content:"";position:absolute;inset:0;border-radius:50%}
+.ping::before{background:var(--glow);opacity:.75;animation:ping 2s cubic-bezier(0,0,.2,1) infinite}
+.ping::after{background:var(--accent)}
+@keyframes ping{75%,100%{transform:scale(2);opacity:0}}
+.hero h1{max-width:896px;font-size:64px;line-height:72px;font-weight:700;letter-spacing:-1.92px;margin-bottom:16px}
+.hero h1 span{display:block;font-weight:400;background:linear-gradient(90deg,var(--text),var(--accent) 50%,var(--glow));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .sub{max-width:672px;font-size:18px;line-height:28px;letter-spacing:-.09px;color:var(--muted);margin-bottom:24px}
+.cta-row{display:flex;flex-wrap:wrap;gap:16px;justify-content:center;padding-bottom:8px}
+.cta-row .btn-primary{box-shadow:0 4px 12px rgba(0,113,227,.4)}
+.cta-row .btn-ghost{background:rgba(52,53,55,.8);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);box-shadow:0 1px 2px rgba(0,0,0,.05)}
+.quiz-link{display:inline-flex;align-items:center;gap:4px;margin:4px 0 40px;color:var(--accent);font-size:13px;line-height:18px;letter-spacing:.065px}
+.showcase{position:relative;width:100%;margin-top:16px;padding:24px;border-radius:16px;background:var(--bg-deep);box-shadow:0 25px 50px -12px rgba(0,0,0,.25);display:flex;flex-direction:column;gap:24px;text-align:center}
+.showcase::before{content:"";position:absolute;inset:0;border-radius:16px;background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,0) 50%);pointer-events:none}
+.spec-pills{position:relative;display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between;padding-inline:4px}
+.spec-pills span{display:inline-flex;align-items:center;gap:4px;padding:4px 8px;border-radius:9999px;background:rgba(41,42,44,.8);box-shadow:0 1px 2px rgba(0,0,0,.05);font-family:var(--serif);font-size:13px;line-height:16px;letter-spacing:-.26px}
+.spec-pills .i{color:var(--muted);font-size:12px}
+.gen-row{position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.gen-card{display:flex;flex-direction:column;align-items:center;min-height:296px;padding:16px 16px 16px;border-radius:12px;background:rgba(31,32,34,.6)}
+.gen-card .tag{font-size:11px;line-height:14px;font-weight:600;letter-spacing:.55px;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.gen-card .tag.a{color:var(--accent)}
+.gen-card .tag.g{color:#c7c6cb}
+.gen-card .shot{position:relative;width:100%;height:176px;margin-bottom:8px;border-radius:8px;overflow:hidden;background:#0a0b0c}
+.gen-card .shot img{position:absolute;inset:12.85% 0 auto 0;width:100%;height:74.31%;object-fit:cover}
+.gen-card h3{font-size:18px;line-height:24px;font-weight:600;letter-spacing:-.18px;margin-top:12px}
+.gen-card p{font-size:13px;line-height:18px;letter-spacing:.065px;color:var(--muted)}
+.gen-card .price{padding-top:4px;font-family:var(--serif);font-size:13px;line-height:16px;letter-spacing:-.26px;color:var(--accent)}
+.gen-card .price.g{color:#c7c6cb}
+.metrics{position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;padding:16px 8px 8px;border-radius:12px;background:rgba(13,14,16,.8);text-align:left}
+.metrics div{padding-inline:8px}
+.metrics dt{font-size:12px;line-height:16px;letter-spacing:.6px;text-transform:uppercase;color:var(--dim)}
+.metrics dd{margin:0;padding-top:4px;font-family:var(--serif);font-weight:700;font-size:13px;line-height:16px;letter-spacing:-.26px}
+.metrics .c1{color:var(--accent)}
+.metrics .c2{color:var(--accent-2)}
+
+/* section 2 */
+.sec{padding:40px 0}
+.sec-deep{background:var(--bg-deep)}
+.intro{max-width:768px;display:flex;flex-direction:column;gap:7px}
+.intro .pill{align-self:flex-start;color:var(--accent);font-size:11px;line-height:14px;font-weight:600;letter-spacing:.55px;text-transform:uppercase}
+.intro .h2{padding-top:1px}
+.col{display:flex;flex-direction:column;gap:24px}
+.tabs{display:flex;flex-wrap:wrap;gap:4px;padding:4px;border-radius:12px;background:var(--surface-low);box-shadow:inset 0 2px 4px rgba(0,0,0,.05);max-width:1052px}
+.tab{padding:4px 16px;border-radius:8px;font-size:13px;line-height:18px;letter-spacing:.065px;color:var(--muted);transition:background .15s,color .15s}
+.tab:hover{color:var(--text)}
+.tab[aria-pressed="true"]{background:var(--primary);color:var(--on-primary)}
+.bento{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;padding-top:16px}
+.cat{display:flex;flex-direction:column;justify-content:space-between;gap:24px;padding:24px;border-radius:16px;background:var(--surface);box-shadow:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -4px rgba(0,0,0,.1)}
+.cat[hidden]{display:none}
+.cat .top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.cat .chip{display:inline-block;padding:4px 8px;border-radius:9999px;background:var(--surface-high);font-size:11px;line-height:14px;font-weight:600;letter-spacing:.55px;text-transform:uppercase;color:#e3e2e7}
+.cat .chip.blue{color:var(--accent)}
+.cat .chip.blue2{color:var(--accent-2)}
+.cat .chip.solid{background:var(--primary);color:var(--on-primary)}
+.cat .top .i{font-size:16px;color:var(--accent)}
+.cat h3{padding-top:12px;font-size:28px;line-height:34px;font-weight:600;letter-spacing:-.56px}
+.cat .best{font-size:11px;line-height:14px;font-weight:600;letter-spacing:.275px;text-transform:uppercase;color:var(--accent);margin-top:4px}
+.cat .best.b2{color:var(--accent-2)}
+.cat .lead{padding-top:3px;margin-top:4px}
+.cat .foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 16px;padding:16px 8px 8px;border-radius:12px;background:rgba(27,28,30,.7)}
+.cat .foot .meta{display:flex;align-items:center;gap:4px;font-family:var(--serif);font-size:13px;line-height:16px;letter-spacing:-.26px;color:var(--text)}
+.cat .foot .meta i{width:8px;height:8px;border-radius:50%;flex:none}
+.cat .foot .meta.dim{color:var(--dim)}
+.cat .foot a{display:inline-flex;align-items:center;gap:4px;font-size:13px;line-height:18px;letter-spacing:.065px;color:var(--accent)}
+.cat .foot a .i{font-size:8px}
+
+/* section 3 */
+.s3-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px}
+.s3-head .txt{display:flex;flex-direction:column;gap:3.5px;padding-top:5px;max-width:660px}
+.s3-head .lead{line-height:22px}
+.verified{display:inline-flex;align-items:center;gap:4px;font-family:var(--serif);font-size:13px;line-height:16px;letter-spacing:-.26px;color:var(--dim)}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.pcard{display:flex;flex-direction:column;justify-content:space-between;padding:24px;border-radius:16px;background:var(--surface);box-shadow:0 20px 25px -5px rgba(0,0,0,.1),0 8px 10px -6px rgba(0,0,0,.1);overflow:hidden}
+.pcard .body{display:flex;flex-direction:column;gap:16px;padding-bottom:24px}
+.ptop{display:flex;align-items:flex-start;justify-content:space-between;gap:16px}
+.ptop .left{display:flex;flex-direction:column;gap:3.5px;padding:1px 0 2.5px;min-width:0}
+.ptop .tagp{align-self:flex-start;padding:4px 8px;border-radius:9999px;background:var(--surface-high);font-size:11px;line-height:14px;font-weight:600;letter-spacing:.55px;text-transform:uppercase;color:#c7c6cb}
+.ptop .tagp.t1{background:rgba(33,147,251,.2);color:var(--accent-2)}
+.ptop .tagp.t2{background:rgba(171,199,255,.2);color:var(--accent)}
+.ptop h3{font-size:28px;line-height:34px;font-weight:600;letter-spacing:-.56px}
+.ptop .variant{font-size:12px;line-height:16px;letter-spacing:.12px;color:var(--muted)}
+.ptop .right{display:flex;flex-direction:column;align-items:flex-end;text-align:right}
+.ptop .amt{font-family:var(--serif);font-weight:700;font-size:28px;line-height:34px;letter-spacing:-.56px;color:var(--accent);white-space:nowrap}
+.ptop .amt small{font-family:var(--sans);font-weight:400;font-size:13px;letter-spacing:.065px;color:var(--dim)}
+.ptop .amt.plain{color:#e3e2e7}
+.ptop .note{font-size:12px;line-height:16px;letter-spacing:.12px;color:var(--dim)}
+.ptop .note.s{text-decoration:line-through}
+.ptop .note.b{color:var(--accent-2)}
+.ptop .note.serif{font-family:var(--serif)}
+.pimg{display:flex;align-items:center;justify-content:center;height:192px;padding:8px;border-radius:12px;background:var(--surface-low);overflow:hidden}
+.pimg img{height:100%;width:auto;max-width:100%;aspect-ratio:322.97/176;object-fit:cover}
+.specs{display:flex;flex-direction:column;gap:8px}
+.spec{display:flex;gap:8px;align-items:flex-start;padding:8px;border-radius:8px;background:var(--surface-low)}
+.spec .i{font-size:15px;color:var(--accent);margin-top:1px}
+.spec b{display:block;font-family:var(--serif);font-size:13px;line-height:16px;letter-spacing:-.26px}
+.spec p{font-size:13px;line-height:18px;letter-spacing:.065px;color:var(--muted)}
+.why{display:flex;flex-direction:column;gap:4px;padding:8px;border-radius:8px;background:rgba(52,53,55,.5)}
+.why h4{font-size:11px;line-height:14px;font-weight:600;letter-spacing:.55px;text-transform:uppercase;color:var(--accent-2)}
+.why h4.dim{color:var(--dim)}
+.why h4.acc{color:var(--accent)}
+.why p{font-size:13px;line-height:18px;letter-spacing:.065px}
+.ctas{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;justify-content:space-between;padding-top:16px}
+.ctas .links{display:flex;align-items:center;gap:8px;font-size:13px;line-height:18px;letter-spacing:.065px}
+.ctas .links a:hover{color:var(--accent)}
+.ctas .links span{color:var(--outline);font-size:15px;line-height:22px}
+.ctas .btn{box-shadow:0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -2px rgba(0,0,0,.1)}
+
+/* section 4 */
+.future{position:relative;overflow:hidden}
+.future .glow{position:absolute;left:25%;right:35.94%;bottom:-127px;height:300px;background:rgba(33,147,251,.1);filter:blur(70px);border-radius:9999px;pointer-events:none}
+.future .col{position:relative}
+.triad{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;padding-top:16px}
+.icard{display:flex;flex-direction:column;justify-content:space-between;gap:16px;padding:24px;border-radius:16px;background:var(--surface);box-shadow:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -4px rgba(0,0,0,.1)}
+.ico{display:grid;place-items:center;width:40px;height:40px;border-radius:12px;background:rgba(0,113,227,.2);color:var(--accent);font-size:20px}
+.ico.b{background:rgba(33,147,251,.2)}
+.ico.g{background:rgba(115,115,120,.3);color:var(--muted)}
+.icard h3{padding-top:12px;font-size:22px;line-height:28px;font-weight:600;letter-spacing:-.33px}
+.icard .desc{margin-top:4px}
+.icard .desc.m{color:var(--muted)}
+.checks{list-style:none;margin:0;padding:12px 0 0;display:flex;flex-direction:column;gap:8px}
+.checks li{display:flex;gap:4px;align-items:flex-start;font-size:13px;line-height:18px;letter-spacing:.065px}
+.checks li .i{font-size:15px;margin-top:1px;color:var(--accent)}
+.checks b{font-weight:700}
+.source{padding-top:8px;font-family:var(--serif);font-size:13px;line-height:16px;letter-spacing:-.26px;color:var(--dim)}
+.flow{display:flex;flex-direction:column;gap:4px;padding:8px;margin-top:12px;border-radius:12px;background:var(--surface-low)}
+.flow + .flow{margin-top:16px}
+.flow .q{padding:4px;border-radius:4px;background:var(--surface-mid);font-family:var(--serif);font-size:13px;line-height:16px;letter-spacing:-.26px}
+.flow .q b{font-weight:700}
+.flow .arr{display:grid;place-items:center;color:var(--accent);font-size:15px}
+.flow .res{padding:4px;border-radius:4px;text-align:center;font-size:11px;line-height:14px;font-weight:600;letter-spacing:.55px;text-transform:uppercase;background:var(--surface-high)}
+.flow .res.p{background:var(--primary);color:var(--on-primary)}
+.timeline{position:relative;display:flex;flex-direction:column;gap:16px;padding:12px 0 0 8px}
+.timeline::before{content:"";position:absolute;left:4px;top:20px;bottom:8px;width:2px;background:var(--surface-high)}
+.tl{position:relative;padding-left:16px}
+.tl::before{content:"";position:absolute;left:-5px;top:6px;width:10px;height:10px;border-radius:50%;background:var(--dot,var(--accent))}
+.tl b{display:block;font-family:var(--serif);font-weight:400;font-size:13px;line-height:16px;letter-spacing:-.26px;color:var(--dot,var(--accent))}
+.tl p{font-size:13px;line-height:18px;letter-spacing:.065px}
+.disclaimer{display:flex;align-items:center;gap:8px;padding:16px;border-radius:12px;background:var(--surface-low);font-size:12px;line-height:19.5px;letter-spacing:.12px;color:var(--dim)}
+.disclaimer .i{font-size:17px}
+
+/* section 5 */
+.s5 .col{gap:40px;align-items:center}
+.s5-head{max-width:672px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:4px;padding-top:5px}
+.s5-head .h2{padding-top:3px}
+.s5-head .lead{line-height:22px}
+.widget{width:100%;max-width:896px;display:flex;flex-direction:column;gap:24px;padding:40px;border-radius:16px;background:var(--surface);box-shadow:0 25px 50px -12px rgba(0,0,0,.25)}
+.questions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;align-items:start}
+.q h3{font-size:18px;line-height:24px;font-weight:600;letter-spacing:-.18px}
+.q .hint{padding:4px 0 16px;font-size:13px;line-height:18px;letter-spacing:.065px;color:var(--muted)}
+.q .lbl{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.q .lbl output{font-family:var(--serif);font-size:13px;line-height:16px;letter-spacing:-.26px;color:var(--accent)}
+.range{width:100%;height:8px;margin:0;border-radius:8px;background:var(--surface-high);-webkit-appearance:none;appearance:none;cursor:pointer}
+.range::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;border-radius:50%;background:var(--primary);border:2px solid var(--accent);box-shadow:0 1px 4px rgba(0,0,0,.4)}
+.range::-moz-range-thumb{width:14px;height:14px;border-radius:50%;background:var(--primary);border:2px solid var(--accent)}
+.range-labels{display:flex;justify-content:space-between;gap:8px;padding-top:12px;font-family:var(--serif);font-size:12px;line-height:16px;letter-spacing:.12px;color:var(--dim)}
+.opts{display:grid;gap:4px}
+.opts.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.opt{padding:4px 8px;border-radius:8px;background:var(--surface-mid);color:var(--muted);text-align:left;font-size:13px;line-height:18px;letter-spacing:.065px;transition:background .15s,color .15s}
+.opt:hover{color:var(--text)}
+.opt[aria-pressed="true"]{background:var(--primary);color:var(--on-primary)}
+.result{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;padding:24px 16px 16px;border-radius:12px;background:var(--surface-low)}
+.result .who{display:flex;gap:16px;align-items:center;min-width:0}
+.result .ico{width:48px;height:48px;font-size:24px}
+.result h4{font-size:22px;line-height:28px;font-weight:600;letter-spacing:-.33px}
+.result p.d{font-size:13px;line-height:18px;letter-spacing:.065px;color:var(--muted)}
+.result .btn{padding-inline:24px}
+.trust{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;width:100%}
+.trust > div{display:flex;gap:8px;align-items:flex-start;padding:16px;border-radius:12px;background:var(--surface)}
+.trust .i{font-size:20px;color:var(--accent);margin-top:1px}
+.trust h4{font-size:15px;line-height:22px;font-weight:400}
+.trust p{padding-top:4px;font-size:13px;line-height:18px;letter-spacing:.065px;color:var(--muted)}
+.news{width:100%;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px;padding:40px;border-radius:16px;background:linear-gradient(90deg,var(--surface),var(--surface-mid));box-shadow:0 20px 25px -5px rgba(0,0,0,.1),0 8px 10px -6px rgba(0,0,0,.1)}
+.news .txt{max-width:576px;display:flex;flex-direction:column;gap:4px;padding-top:5px}
+.news h3{padding-top:3px;font-size:28px;line-height:34px;font-weight:600;letter-spacing:-.56px}
+.news .lead{line-height:22px}
+.mail{display:flex;gap:4px;align-items:center}
+.mail input{width:288px;max-width:100%;padding:9px 16px;border:0;border-radius:9999px;background:var(--bg-deep);color:var(--text);font:inherit;font-size:13px;line-height:16px;letter-spacing:.065px;box-shadow:inset 0 2px 4px rgba(0,0,0,.05)}
+.mail input::placeholder{color:var(--dim)}
+.mail .btn{padding:8px 24px;white-space:nowrap}
+.form-msg{min-height:18px;font-size:12px;line-height:18px;color:var(--accent);flex-basis:100%}
+
+/* footer */
+.site-footer{background:var(--bg-deep);box-shadow:0 -1px 8px rgba(0,0,0,.5)}
+.site-footer .wrap{padding-top:40px;padding-bottom:24px}
+.fgrid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px;padding-bottom:40px}
+.f1{grid-column:1/span 5;display:flex;flex-direction:column;gap:8px}
+.f2{grid-column:6/span 2}.f3{grid-column:8/span 2}.f4{grid-column:10/span 3}
+.f1 .logo{display:flex;align-items:center;gap:8px;font-size:18px;line-height:24px;font-weight:600;letter-spacing:-.18px}
+.f1 .logo img{width:24px;height:24px}
+.f1 .about{max-width:448px;font-size:13px;line-height:18px;letter-spacing:.065px;color:var(--muted)}
+.f1 .sub{padding-top:8px;display:flex;flex-direction:column;gap:4px}
+.f1 form{display:flex;gap:4px;max-width:448px}
+.f1 input{flex:1;min-width:0;padding:9px 16px;border:0;border-radius:8px;background:var(--surface);color:var(--text);font:inherit;font-size:13px;line-height:16px;box-shadow:inset 0 2px 4px rgba(0,0,0,.05)}
+.f1 input::placeholder{color:var(--dim)}
+.f1 .btn{border-radius:8px;padding:8px 16px;background:var(--surface-high);white-space:nowrap}
+.fcol h4{padding-bottom:4px;font-size:15px;line-height:22px;font-weight:400}
+.fcol ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:4px}
+.fcol li{font-size:13px;line-height:18px;letter-spacing:.065px;color:var(--muted)}
+.fcol li a:hover{color:var(--text)}
+.fcol .mi{display:flex;align-items:center;gap:4px;font-family:var(--serif);line-height:16px;letter-spacing:-.26px}
+.fcol .mi i{width:6px;height:6px;border-radius:50%;flex:none}
+.fbottom{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;padding-top:24px;font-size:12px;line-height:19.5px;letter-spacing:.12px;color:var(--dim)}
+.fbottom .legal{max-width:768px;display:flex;flex-direction:column;gap:4px}
+.fbottom .legal p:last-child{line-height:16px}
+.fbottom .links{display:flex;gap:16px;align-items:center;line-height:16px}
+.fbottom .links .reg{font-family:var(--serif);font-size:13px;letter-spacing:-.26px;color:var(--outline)}
+.fbottom .links a:hover{color:var(--text)}
+
+/* responsive */
+@media (max-width:1100px){
+  :root{--gutter:32px}
+  .nav a{padding-inline:12px}
+  .region{display:none}
+  .hero h1{font-size:52px;line-height:60px}
+  .gen-row,.metrics{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .triad{grid-template-columns:1fr}
+  .questions{grid-template-columns:1fr}
+  .f1{grid-column:1/-1}.f2{grid-column:1/span 4}.f3{grid-column:5/span 4}.f4{grid-column:9/span 4}
+}
+@media (max-width:900px){
+  .menu-btn{display:grid}
+  .nav{position:absolute;top:80px;left:var(--gutter);right:var(--gutter);display:none;flex-direction:column;align-items:stretch;padding:8px;border-radius:16px;background:rgba(18,19,21,.97);box-shadow:0 12px 24px rgba(0,0,0,.5)}
+  .nav.open{display:flex}
+  .nav a{padding:8px 16px}
+  .bento,.cards,.trust{grid-template-columns:1fr}
+  .h2{font-size:36px;line-height:44px}
+  .news{padding:32px}
+}
+@media (max-width:640px){
+  :root{--gutter:20px}
+  .site-header .bar{height:68px}
+  .nav{top:68px}
+  .brand small{display:none}
+  .header-cta{display:none}
+  .hero h1{font-size:38px;line-height:44px;letter-spacing:-1.1px}
+  .hero .sub{font-size:16px;line-height:26px}
+  .showcase{padding:16px}
+  .spec-pills{justify-content:center}
+  .gen-row{grid-template-columns:1fr}
+  .metrics{grid-template-columns:1fr}
+  .h2{font-size:30px;line-height:38px;letter-spacing:-.8px}
+  .cat h3,.ptop h3,.news h3{font-size:24px;line-height:30px}
+  .ptop{flex-direction:column}
+  .ptop .right{align-items:flex-start;text-align:left}
+  .ptop .amt{font-size:24px}
+  .widget{padding:24px 20px}
+  .opts.two{grid-template-columns:1fr}
+  .result .btn{width:100%}
+  .news{padding:24px 20px}
+  .mail{width:100%;flex-wrap:wrap}
+  .mail input{width:100%}
+  .mail .btn{width:100%}
+  .f2{grid-column:1/span 6}.f3{grid-column:7/span 6}.f4{grid-column:1/-1}
+  .f1 form{flex-wrap:wrap}.f1 form .btn{width:100%}
+  .cat .foot{flex-direction:column;align-items:flex-start}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .ping::before{animation:none}
+}
+</style>
+</head>
+<body>
+
+<!-- Icon sprite -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-arrow-r" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-arrow-d" viewBox="0 0 24 24"><path d="M12 4v16M6 14l6 6 6-6"/></symbol>
+  <symbol id="i-chev" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></symbol>
+  <symbol id="i-quiz" viewBox="0 0 24 24"><rect x="8" y="3" width="13" height="13" rx="2"/><path d="M4 8v11a2 2 0 0 0 2 2h11M12 8h5M12 12h5"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"/></symbol>
+  <symbol id="i-camera" viewBox="0 0 24 24"><path d="M4 8h3l2-3h6l2 3h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/><circle cx="12" cy="13" r="3.5"/></symbol>
+  <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2L5 14h6l-1 8 8-12h-6z"/></symbol>
+  <symbol id="i-usb" viewBox="0 0 24 24"><path d="M12 3v15M12 18a2 2 0 1 0 0 3 2 2 0 0 0 0-3zM12 11l5-3v-2M12 14l-5-3v-2M7 6h2v2H7zM16 4h3v2h-3z"/></symbol>
+  <symbol id="i-chip" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2"/><rect x="9.5" y="9.5" width="5" height="5"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/></symbol>
+  <symbol id="i-battery" viewBox="0 0 24 24"><rect x="7" y="3" width="10" height="18" rx="2"/><path d="M10 2h4M10 14h4M10 17h4"/></symbol>
+  <symbol id="i-lens" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/></symbol>
+  <symbol id="i-grid" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h2v2H9zM13 9h2v2h-2zM9 13h2v2H9zM13 13h2v2h-2z"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7l1.5 3.2 3.5.4-2.6 2.4.7 3.5-3.1-1.8-3.1 1.8.7-3.5L7 10.6l3.5-.4z"/></symbol>
+  <symbol id="i-history" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7L3 8M3 3v5h5M12 7v5l3 2"/></symbol>
+  <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M4 12a8 8 0 0 1 14-5l2 2M20 4v5h-5M20 12a8 8 0 0 1-14 5l-2-2M4 20v-5h5"/></symbol>
+  <symbol id="i-phone-arrow" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M9 12h6M12.5 9.5L15 12l-2.5 2.5"/></symbol>
+  <symbol id="i-vintage" viewBox="0 0 24 24"><rect x="3" y="5" width="15" height="14" rx="2"/><path d="M7 9h7M7 12h4M18 8l3-2M16 3l1 3"/></symbol>
+  <symbol id="i-thumb" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9 11v5h5.5a1.5 1.5 0 0 0 1.4-1l.9-2.6A1 1 0 0 0 15.8 11H13l.4-2a1.3 1.3 0 0 0-2.3-1L9 11zM7.5 11H9v5H7.5z"/></symbol>
+  <symbol id="i-gauge" viewBox="0 0 24 24"><path d="M4 18a9 9 0 1 1 16 0"/><path d="M12 14l4-5M12 14v.01"/></symbol>
+  <symbol id="i-verified" viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 5-3.5 8.5-7 10-3.5-1.5-7-5-7-10V6z"/><path d="M9 12l2 2 4-4"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.7 2.7L16 9.5"/></symbol>
+  <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></symbol>
+  <symbol id="i-compass" viewBox="0 0 24 24"><path d="M12 3L6 21M12 3l6 18M8 15h8M12 3v3"/></symbol>
+  <symbol id="i-scale" viewBox="0 0 24 24"><path d="M12 3v18M7 21h10M5 7h14M5 7l-3 7a3.5 3.5 0 0 0 6 0zM19 7l-3 7a3.5 3.5 0 0 0 6 0z"/></symbol>
+  <symbol id="i-radar" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2"/></symbol>
+  <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8v.01"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol>
+  <symbol id="i-shield-check" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4.5-3.2 8-8 9-4.8-1-8-4.5-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></symbol>
+  <symbol id="i-shield-sync" viewBox="0 0 24 24"><path d="M5 12a7 7 0 0 1 12-4.5L19 9.5M19 5v4.5h-4.5M19 12a7 7 0 0 1-12 4.5L5 14.5M5 19v-4.5h4.5"/></symbol>
+</svg>
+
+<header class="site-header">
+  <div class="wrap bar">
+    <a class="brand" href="#home" aria-label="iPhone Guide home">
+      <img src="assets/emblem.png" data-remote="https://www.figma.com/api/mcp/asset/b2e4343b-e0e6-4ee0-9637-b9cc9a8f7235/c2d75.png" alt="" width="32" height="32">
+      <span><b>iPhone Guide</b><small>Explore · Compare · Price</small></span>
+    </a>
+    <nav class="nav" id="nav" aria-label="Primary">
+      <a href="#home" class="active">Home</a>
+      <a href="#all-iphones">All iPhones</a>
+      <a href="#compare">Compare</a>
+      <a href="#whats-next">What's Next</a>
+      <a href="#buying-guide">Buying Guide</a>
+    </nav>
+    <div class="actions">
+      <span class="region"><i></i>India · ₹ INR</span>
+      <a class="btn btn-primary header-cta" href="#buying-guide">Find Your Match</a>
+      <span class="avatar" aria-hidden="true"><svg class="i" style="font-size:14px"><use href="#i-user"/></svg></span>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="nav" aria-label="Toggle menu">☰</button>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- SECTION 1: HERO -->
+<section class="hero" id="home" aria-labelledby="hero-title">
+  <div class="glow-a"></div><div class="glow-b"></div>
+  <div class="wrap inner">
+    <div class="badge"><span class="ping"></span>THE DEFINITIVE IPHONE BUYER'S COMPASS</div>
+    <h1 id="hero-title">Every iPhone has a story.<span>Find yours.</span></h1>
+    <p class="sub">From the classics that started it all to the latest models, explore iPhones across generations, compare their features, and find one that feels right for you.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary btn-lg" href="#all-iphones">Explore Models <svg class="i" style="font-size:12px"><use href="#i-arrow-r"/></svg></a>
+      <a class="btn btn-ghost btn-lg" href="#compare">Compare iPhones</a>
+    </div>
+    <a class="quiz-link" href="#buying-guide"><svg class="i" style="font-size:13px"><use href="#i-quiz"/></svg>Take the 60-Second Matchmaker Quiz</a>
+
+    <div class="showcase">
+      <div class="spec-pills">
+        <span><svg class="i"><use href="#i-globe"/></svg>A18 Pro Bionic</span>
+        <span><svg class="i"><use href="#i-camera"/></svg>48MP Fusion Camera</span>
+        <span><svg class="i"><use href="#i-bolt"/></svg>All-Day Battery</span>
+        <span><svg class="i"><use href="#i-usb"/></svg>USB-C &amp; Action Button</span>
+      </div>
+      <div class="gen-row">
+        <article class="gen-card">
+          <span class="tag a">FLAGSHIP 2024–25</span>
+          <div class="shot"><img src="assets/hero-iphone-16-pro.png" data-remote="https://www.figma.com/api/mcp/asset/75fc1ad8-9f11-4315-8157-54e42123cfc6/ba1b1.png" alt="iPhone 16 Pro in Desert Titanium" loading="lazy"></div>
+          <h3>iPhone 16 Pro</h3><p>Desert Titanium</p><span class="price">From ₹1,19,900</span>
+        </article>
+        <article class="gen-card">
+          <span class="tag">MODERN SWEET SPOT</span>
+          <div class="shot"><img src="assets/hero-iphone-15.png" data-remote="https://www.figma.com/api/mcp/asset/75fc1ad8-9f11-4315-8157-54e42123cfc6/edb6d.png" alt="iPhone 15" loading="lazy"></div>
+          <h3>iPhone 15</h3><p>Dynamic Island &amp; USB-C</p><span class="price">From ₹58,999</span>
+        </article>
+        <article class="gen-card">
+          <span class="tag">SMART BUDGET</span>
+          <div class="shot"><img src="assets/hero-iphone-13.png" data-remote="https://www.figma.com/api/mcp/asset/75fc1ad8-9f11-4315-8157-54e42123cfc6/c775e.png" alt="iPhone 13 in Midnight" loading="lazy"></div>
+          <h3>iPhone 13</h3><p>Midnight / Starlight</p><span class="price">From ₹42,999</span>
+        </article>
+        <article class="gen-card">
+          <span class="tag g">THE LEGEND 2014</span>
+          <div class="shot"><img src="assets/hero-iphone-6.png" data-remote="https://www.figma.com/api/mcp/asset/75fc1ad8-9f11-4315-8157-54e42123cfc6/d4afe.png" alt="iPhone 6 Classic" loading="lazy"></div>
+          <h3>iPhone 6 Classic</h3><p>The 6.9mm Slim Pioneer</p><span class="price g">From ₹5,499</span>
+        </article>
+      </div>
+      <dl class="metrics" style="margin:0">
+        <div><dt>Generations</dt><dd>1st Gen to 16 Pro</dd></div>
+        <div><dt>Price range</dt><dd class="c1">₹12,999 to ₹1,84,900</dd></div>
+        <div><dt>Active models tracked</dt><dd>24+ Validated</dd></div>
+        <div><dt>Verified deals</dt><dd class="c2">100% Inspected</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 2: EXPLORE ALL IPHONE MODELS -->
+<section class="sec sec-deep" id="all-iphones" aria-labelledby="s2-title">
+  <div class="wrap col">
+    <div class="intro">
+      <span class="pill">HISTORICAL &amp; CURRENT SPECTRUM</span>
+      <h2 class="h2" id="s2-title">Every generation, all in one place.</h2>
+      <p class="lead">Not everyone needs the newest iPhone. Some people want a great camera, some want smooth everyday performance, and others just want a reliable iPhone without spending too much. Explore different generations, compare the features that matter, and see which models fit your budget. Whether you're looking for your first iPhone or planning an upgrade, there's more than one option worth considering.</p>
+    </div>
+    <div class="tabs" role="group" aria-label="Filter generations">
+      <button class="tab" data-filter="all" aria-pressed="true">All Generations</button>
+      <button class="tab" data-filter="classics" aria-pressed="false">The Classics (Collector)</button>
+      <button class="tab" data-filter="everyday" aria-pressed="false">Everyday Favourites (Budget)</button>
+      <button class="tab" data-filter="modern" aria-pressed="false">The Modern Generation (Smart Value)</button>
+      <button class="tab" data-filter="latest" aria-pressed="false">The Latest &amp; Greatest (Flagships)</button>
+    </div>
+    <div class="bento">
+      <article class="cat" data-cat="classics">
+        <div>
+          <div class="top"><span class="chip">OLDER GENERATIONS · IPHONE 6 / 6S / SE 1ST GEN</span><svg class="i" style="color:var(--muted)"><use href="#i-vintage"/></svg></div>
+          <h3>The Classics</h3>
+          <p class="best">BEST FOR: COLLECTORS AND CASUAL EXPLORATION</p>
+          <p class="lead">The iPhones that started it all for many users. These older models are part of Apple's story and may appeal to collectors or people exploring the evolution of the iPhone. Check software support and battery condition carefully before buying one for everyday use.</p>
+        </div>
+        <div class="foot"><span class="meta dim"><i style="background:#c7c6cb"></i>Collector / Vintage • Check iOS Support</span><a href="#compare">Inspect Models <svg class="i"><use href="#i-chev"/></svg></a></div>
+      </article>
+      <article class="cat" data-cat="everyday">
+        <div>
+          <div class="top"><span class="chip blue2">PREVIOUS GENERATIONS · IPHONE 11 / 12</span><svg class="i"><use href="#i-thumb"/></svg></div>
+          <h3>Everyday Favourites</h3>
+          <p class="best b2">BEST FOR: EVERYDAY USE ON A BUDGET</p>
+          <p class="lead">Looking for an iPhone for calls, photos, social media and daily tasks? Previous-generation models can be worth considering at the right price. Battery health, storage and current software support make a real difference.</p>
+        </div>
+        <div class="foot"><span class="meta"><i style="background:var(--glow)"></i>From ₹26,999 (Certified Refurbished)</span><a href="#compare">Inspect Models <svg class="i"><use href="#i-chev"/></svg></a></div>
+      </article>
+      <article class="cat" data-cat="modern">
+        <div>
+          <div class="top"><span class="chip blue">NEWER MODELS · IPHONE 13 / 14 / 15</span><svg class="i"><use href="#i-gauge"/></svg></div>
+          <h3>The Modern Generation</h3>
+          <p class="best">BEST FOR: A BALANCE OF FEATURES AND LONGEVITY</p>
+          <p class="lead">Newer iPhones offer more modern features, updated cameras and longer potential software-support lifespans. They're a good place to start if you want a phone that feels current without automatically choosing the newest release.</p>
+        </div>
+        <div class="foot"><span class="meta"><i style="background:var(--accent)"></i>Dynamic Island · 48MP Sensors · 5G</span><a href="#compare">Inspect Models <svg class="i"><use href="#i-chev"/></svg></a></div>
+      </article>
+      <article class="cat" data-cat="latest">
+        <div>
+          <div class="top"><span class="chip solid">CURRENT FLAGSHIP MODELS · IPHONE 16 / 16 PRO / PRO MAX</span><svg class="i"><use href="#i-star"/></svg></div>
+          <h3>The Latest &amp; Greatest</h3>
+          <p class="best">BEST FOR: POWER USERS AND PHOTOGRAPHY ENTHUSIASTS</p>
+          <p class="lead">If camera capabilities, high-end performance and the newest features are your priorities, start here. Compare the standard and Pro models before deciding whether the extra features are worth the additional cost.</p>
+        </div>
+        <div class="foot"><span class="meta"><i style="background:var(--accent-2)"></i>Grade 5 Titanium · Apple Intelligence · A18 Pro</span><a href="#compare">Inspect Models <svg class="i"><use href="#i-chev"/></svg></a></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3: DETAILED PRODUCT & BUYING CARDS -->
+<section class="sec" id="compare" aria-labelledby="s3-title">
+  <div class="wrap col" style="gap:40px">
+    <div class="s3-head">
+      <div class="txt">
+        <span class="eyebrow">IN-DEPTH HARDWARE BREAKDOWN</span>
+        <h2 class="h2" id="s3-title">Detailed Product &amp; Buying Cards</h2>
+        <p class="lead">Standardized specs, battery durability indices, and validated Indian market street valuations across tiers.</p>
+      </div>
+      <span class="verified"><svg class="i" style="font-size:16px"><use href="#i-verified"/></svg>Verified INR Retail Matrix</span>
+    </div>
+
+    <div class="cards">
+      <!-- Card 1 -->
+      <article class="pcard">
+        <div class="body">
+          <div class="ptop">
+            <div class="left"><span class="tagp t1">BRAND NEW / SEALED</span><h3>iPhone 15</h3><span class="variant">128GB Black / Blue / Pink</span></div>
+            <div class="right"><span class="amt">₹58,999</span><span class="note s">MSRP ₹69,900 · 15% Off</span></div>
+          </div>
+          <div class="pimg"><img src="assets/card-iphone-15.png" data-remote="https://www.figma.com/api/mcp/asset/9ff7be52-fbb2-4d39-91a8-593e80363597/ee268.png" alt="iPhone 15 product shot" loading="lazy"></div>
+          <div class="specs">
+            <div class="spec"><svg class="i"><use href="#i-chip"/></svg><div><b>Performance</b><p>A16 Bionic with 5-core GPU. Silky smooth multitasking, console-grade gaming &amp; iOS 18 fluid gestures.</p></div></div>
+            <div class="spec"><svg class="i"><use href="#i-camera"/></svg><div><b>Camera Architecture</b><p>48MP Main sensor with 2x Telephoto crop + 12MP Ultra-Wide. 4K Dolby Vision cinematic video recording.</p></div></div>
+            <div class="spec"><svg class="i"><use href="#i-battery"/></svg><div><b>Battery &amp; Charging</b><p>Up to 20 hrs video playback. Type-C charging. Battery health guaranteed 100% on new units.</p></div></div>
+          </div>
+          <div class="why"><h4>WHY CONSIDER IT?</h4><p>A practical option to explore if you want modern iPhone features without Pro pricing. Features Dynamic Island and USB-C convenience.</p></div>
+        </div>
+        <div class="ctas">
+          <div class="links"><a href="#">View details</a><span>·</span><a href="#">Compare</a></div>
+          <a class="btn btn-primary" href="#">Buy from Verified Seller (Amazon / Flipkart / Apple)</a>
+        </div>
+      </article>
+
+      <!-- Card 2 -->
+      <article class="pcard">
+        <div class="body">
+          <div class="ptop">
+            <div class="left"><span class="tagp t2">CURRENT FLAGSHIP</span><h3>iPhone 16 Pro</h3><span class="variant">128GB / 256GB Desert Titanium</span></div>
+            <div class="right"><span class="amt">₹1,19,900</span><span class="note b">Pre-order Special Available</span></div>
+          </div>
+          <div class="pimg"><img src="assets/card-iphone-16-pro.png" data-remote="https://www.figma.com/api/mcp/asset/9ff7be52-fbb2-4d39-91a8-593e80363597/e686e.png" alt="iPhone 16 Pro product shot" loading="lazy"></div>
+          <div class="specs">
+            <div class="spec"><svg class="i"><use href="#i-chip"/></svg><div><b>Performance</b><p>A18 Pro with dedicated Neural Engine. Hardware ray tracing &amp; Apple Intelligence on-device processing.</p></div></div>
+            <div class="spec"><svg class="i"><use href="#i-lens"/></svg><div><b>Camera Architecture</b><p>Pro 48MP Fusion + 48MP Ultra Wide + 5x Telephoto optical zoom. 4K 120 fps ProRes recording.</p></div></div>
+            <div class="spec"><svg class="i"><use href="#i-bolt"/></svg><div><b>Battery &amp; Charging</b><p>Up to 27 hrs video playback. Fastest MagSafe 25W charging.</p></div></div>
+          </div>
+          <div class="why"><h4 class="acc">WHY CONSIDER IT?</h4><p>Unmatched video production capabilities, titanium durability, and dedicated Camera Control button.</p></div>
+        </div>
+        <div class="ctas">
+          <div class="links"><a href="#">View details</a><span>·</span><a href="#">Compare</a></div>
+          <a class="btn btn-primary" href="#">Buy Now</a>
+        </div>
+      </article>
+
+      <!-- Card 3 -->
+      <article class="pcard">
+        <div class="body">
+          <div class="ptop">
+            <div class="left"><span class="tagp">EVERYDAY VALUE PICK (NEW/REFURBISHED)</span><h3>iPhone 13</h3><span class="variant">128GB Midnight</span></div>
+            <div class="right"><span class="amt">₹42,999 <small>New</small></span><span class="note b serif">₹28,500 Certified Refurbished</span></div>
+          </div>
+          <div class="pimg"><img src="assets/card-iphone-13.png" data-remote="https://www.figma.com/api/mcp/asset/9ff7be52-fbb2-4d39-91a8-593e80363597/05cc3.png" alt="iPhone 13 product shot" loading="lazy"></div>
+          <div class="specs">
+            <div class="spec"><svg class="i"><use href="#i-grid"/></svg><div><b>Performance</b><p>A15 Bionic chip. Dependable daily performance, swift social media browsing &amp; smooth multitasking.</p></div></div>
+            <div class="spec"><svg class="i"><use href="#i-star"/></svg><div><b>Camera Architecture</b><p>Dual 12MP system with sensor-shift optical stabilization &amp; Cinematic mode.</p></div></div>
+            <div class="spec"><svg class="i"><use href="#i-phone-arrow"/></svg><div><b>Battery &amp; Charging</b><p>Up to 19 hrs video. Refurbished units verified at ≥85% battery health with 1-year warranty.</p></div></div>
+          </div>
+          <div class="why"><h4>WHY CONSIDER IT?</h4><p>The quintessential budget gateway into the iOS ecosystem with 5G connectivity and outstanding battery life.</p></div>
+        </div>
+        <div class="ctas">
+          <div class="links"><a href="#">View details</a><span>·</span><a href="#">Compare</a></div>
+          <a class="btn btn-ghost" href="#">Check Verified Deals</a>
+        </div>
+      </article>
+
+      <!-- Card 4 -->
+      <article class="pcard">
+        <div class="body">
+          <div class="ptop">
+            <div class="left"><span class="tagp">THE CLASSIC VINTAGE (USED / COLLECTOR)</span><h3>iPhone 6</h3><span class="variant">16GB / 64GB Space Gray</span></div>
+            <div class="right"><span class="amt plain">₹5,499 - ₹8,999</span><span class="note">Pre-owned / Collector Grade</span></div>
+          </div>
+          <div class="pimg"><img src="assets/card-iphone-6.png" data-remote="https://www.figma.com/api/mcp/asset/9ff7be52-fbb2-4d39-91a8-593e80363597/395b1.png" alt="iPhone 6 product shot" loading="lazy"></div>
+          <div class="specs">
+            <div class="spec"><svg class="i"><use href="#i-history"/></svg><div><b>Performance</b><p>Apple A8 chip. Capable of basic tasks, offline music, and vintage iOS experience. Note: iOS 12 cap.</p></div></div>
+            <div class="spec"><svg class="i"><use href="#i-camera"/></svg><div><b>Camera Architecture</b><p>8MP iSight camera with Focus Pixels. Charming classic color rendition.</p></div></div>
+            <div class="spec"><svg class="i"><use href="#i-battery"/></svg><div><b>Battery &amp; Charging</b><p>Battery health variable on vintage units; recommend third-party replacement for active daily use.</p></div></div>
+          </div>
+          <div class="why"><h4 class="dim">WHY CONSIDER IT?</h4><p>Historic milestone design, ultra-thin aluminum chassis. A nostalgic gem for collectors or secondary backup phone.</p></div>
+        </div>
+        <div class="ctas">
+          <div class="links"><a href="#">Collector Specs</a><span>·</span><a href="#">Condition Guide</a></div>
+          <a class="btn btn-ghost" href="#">Find on Ubuy / Recommerce</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 4: WHAT'S COMING NEXT -->
+<section class="sec sec-deep future" id="whats-next" aria-labelledby="s4-title">
+  <div class="glow"></div>
+  <div class="wrap col">
+    <div class="intro">
+      <span class="pill"><svg class="i" style="font-size:14px"><use href="#i-eye"/></svg>A LOOK INTO THE FUTURE</span>
+      <h2 class="h2" id="s4-title">The next chapter of iPhone.</h2>
+      <p class="lead">There's always something new to look forward to. A fresh design, smarter features or improvements to the camera — the next generation could bring plenty to talk about. Until Apple makes an official announcement, consider this your space to explore possibilities, follow the latest updates and see what might be worth waiting for.</p>
+    </div>
+
+    <div class="triad">
+      <article class="icard">
+        <div>
+          <span class="ico"><svg class="i"><use href="#i-compass"/></svg></span>
+          <h3>What might change?</h3>
+          <p class="small desc m">Industry telemetry and CAD leak projections indicate major structural revisions:</p>
+          <ul class="checks">
+            <li><svg class="i"><use href="#i-check"/></svg><span><b>iPhone 17 Air / Slim:</b> Rumored ultra-thin profile measuring ~5.5mm with a single center lens bump.</span></li>
+            <li><svg class="i"><use href="#i-check"/></svg><span><b>Refined Under-Display Face ID:</b> Shrunk island footprint expanding visible screen area.</span></li>
+            <li><svg class="i"><use href="#i-check"/></svg><span><b>Anti-Reflective Coating:</b> Scratch-resistant harder glass layer rivaling titanium shields.</span></li>
+            <li><svg class="i"><use href="#i-check"/></svg><span><b>Vapor Chamber Cooling:</b> Sustained peak performance during on-device generative tasks.</span></li>
+          </ul>
+        </div>
+        <p class="source">Source: Analytics &amp; Supply Chain Dispatches</p>
+      </article>
+
+      <article class="icard">
+        <div>
+          <span class="ico b"><svg class="i"><use href="#i-scale"/></svg></span>
+          <h3>Should you buy now or wait?</h3>
+          <p class="small desc m">A pragmatic decision matrix based on your current device hardware degradation:</p>
+          <div class="flow">
+            <div class="q"><b style="color:#ffb4ab">●</b> On iPhone 11 or 12 &amp; Battery &lt; 75%</div>
+            <div class="arr"><svg class="i"><use href="#i-arrow-d"/></svg></div>
+            <div class="res p">UPGRADE NOW (IPHONE 15 OR 16 PRO)</div>
+          </div>
+          <div class="flow">
+            <div class="q"><b style="color:var(--accent-2)">●</b> Currently on iPhone 14 or 15</div>
+            <div class="arr"><svg class="i"><use href="#i-arrow-d"/></svg></div>
+            <div class="res">SAFE TO HOLD FOR THE NEXT GENERATION</div>
+          </div>
+        </div>
+        <p class="source">Cycle evaluation: September annual roadmap</p>
+      </article>
+
+      <article class="icard">
+        <div>
+          <span class="ico g"><svg class="i"><use href="#i-radar"/></svg></span>
+          <h3>Rumour Radar Timeline</h3>
+          <p class="small desc m">Chronological distinction of supply-chain confirmations vs speculative renderings:</p>
+          <div class="timeline">
+            <div class="tl" style="--dot:var(--accent)"><b>Q1 2025 · Verified</b><p>OLED panel supplier certifications completed for narrower bezel glass displays.</p></div>
+            <div class="tl" style="--dot:var(--accent-2)"><b>Q2 2025 · Moderate Probability</b><p>ProMotion 120Hz display controller expansion into standard line configurations.</p></div>
+            <div class="tl" style="--dot:var(--dim)"><b>Future Horizon · Concept Stage</b><p style="color:var(--muted)">Full all-glass unibody with zero physical connector cutouts.</p></div>
+          </div>
+        </div>
+        <p class="source">Radar updated: Bi-weekly</p>
+      </article>
+    </div>
+
+    <div class="disclaimer"><svg class="i"><use href="#i-info"/></svg><span>Concepts and predictions are for demonstration only. Unannounced specifications, prices and release dates are not confirmed by Apple Inc.</span></div>
+  </div>
+</section>
+
+<!-- SECTION 5: INTERACTIVE BUYING GUIDE -->
+<section class="sec s5" id="buying-guide" aria-labelledby="s5-title">
+  <div class="wrap col">
+    <div class="s5-head">
+      <span class="eyebrow">PRECISION MATCHMAKER</span>
+      <h2 class="h2" id="s5-title">Find Your Ideal iPhone in 3 Questions</h2>
+      <p class="lead">Filter through hardware variants, price boundaries, and intended workloads.</p>
+    </div>
+
+    <div class="widget">
+      <div class="questions">
+        <div class="q">
+          <div class="lbl"><h3>1. Your Budget</h3><output id="budgetOut" for="budget">₹60,000</output></div>
+          <p class="hint">Adjust max investment ceiling in INR.</p>
+          <input class="range" id="budget" type="range" min="15000" max="160000" step="1000" value="60000" aria-label="Maximum budget in rupees">
+          <div class="range-labels"><span>₹15k (Vintage)</span><span>₹1.6L+ (Pro Max)</span></div>
+        </div>
+        <div class="q" role="group" aria-labelledby="q2">
+          <h3 id="q2">2. Primary Priority</h3>
+          <p class="hint">Where will this phone excel?</p>
+          <div class="opts two" data-group="priority">
+            <button class="opt" data-v="camera" aria-pressed="true">Pro Camera</button>
+            <button class="opt" data-v="gaming" aria-pressed="false">High Gaming</button>
+            <button class="opt" data-v="daily" aria-pressed="false">Daily Tasks</button>
+            <button class="opt" data-v="battery" aria-pressed="false">Battery Life</button>
+          </div>
+        </div>
+        <div class="q" role="group" aria-labelledby="q3">
+          <h3 id="q3">3. Device Ergonomics</h3>
+          <p class="hint">Preferred handheld dimensions.</p>
+          <div class="opts" data-group="size">
+            <button class="opt" data-v="standard" aria-pressed="true">Standard (6.1" - 6.3")</button>
+            <button class="opt" data-v="max" aria-pressed="false">Max / Plus (6.7" - 6.9")</button>
+            <button class="opt" data-v="compact" aria-pressed="false">Compact / SE Vintage (&lt;5.4")</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="result" aria-live="polite">
+        <div class="who">
+          <span class="ico"><svg class="i"><use href="#i-thumb"/></svg></span>
+          <div>
+            <span class="eyebrow">RECOMMENDED MATCH</span>
+            <h4 id="recName">iPhone 15 (128GB)</h4>
+            <p class="d" id="recWhy">Matches your ₹60k budget with 48MP camera &amp; USB-C portability.</p>
+          </div>
+        </div>
+        <a class="btn btn-primary" href="#compare">Inspect Model Spec</a>
+      </div>
+    </div>
+
+    <div class="trust">
+      <div><svg class="i"><use href="#i-shield-check"/></svg><div><h4>Verified Retail Partners</h4><p>Indian MRP monitoring cross-checked with Apple Authorized Resellers, Amazon.in, and Reliance Digital.</p></div></div>
+      <div><svg class="i"><use href="#i-phone-arrow"/></svg><div><h4>Battery Health Transparency</h4><p>Clear health checklists provided for refurbished purchases to guarantee battery retention before checkout.</p></div></div>
+      <div><svg class="i"><use href="#i-shield-sync"/></svg><div><h4>Refurbished Grading Standards</h4><p>Every pre-owned unit tracked conforms to standardized Grade-A cosmetic inspections with warranty backing.</p></div></div>
+    </div>
+
+    <form class="news" id="newsForm" novalidate>
+      <div class="txt">
+        <span class="eyebrow">AUTOMATED INTELLIGENCE</span>
+        <h3>Never miss an iPhone price drop or launch.</h3>
+        <p class="lead">Receive concise alerts when festive bank offers drop flagship prices or when new models are confirmed.</p>
+      </div>
+      <div class="mail">
+        <input type="email" name="email" placeholder="Enter your email address" aria-label="Email address" required>
+        <button class="btn btn-primary" type="submit">Notify Me</button>
+      </div>
+      <p class="form-msg" role="status"></p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="fgrid">
+      <div class="f1">
+        <div class="logo"><img src="assets/emblem.png" data-remote="https://www.figma.com/api/mcp/asset/b2e4343b-e0e6-4ee0-9637-b9cc9a8f7235/c2d75.png" alt="" width="24" height="24">iPhone Guide</div>
+        <p class="about">The definitive hardware comparison and decision intelligence hub. Real-time Indian retail pricing, comprehensive spec diffing, benchmark telemetry, and certified purchase guidance.</p>
+        <div class="sub">
+          <span class="eyebrow">STAY INFORMED ON UPCOMING HARDWARE</span>
+          <form id="footForm" novalidate>
+            <input type="email" placeholder="Enter your email for launch alerts" aria-label="Email for launch alerts">
+            <button class="btn" type="submit">Subscribe</button>
+          </form>
+          <p class="form-msg" id="footMsg" role="status"></p>
+        </div>
+      </div>
+      <nav class="fcol f2" aria-label="Exploration">
+        <h4>Exploration</h4>
+        <ul>
+          <li><a href="#all-iphones">All Lineup Specs</a></li>
+          <li><a href="#compare">Side-by-Side Matrix</a></li>
+          <li><a href="#whats-next">Next-Gen Leaks &amp; Cycles</a></li>
+          <li><a href="#buying-guide">Upgrade Readiness Test</a></li>
+          <li><a href="#buying-guide">Interactive Selector</a></li>
+        </ul>
+      </nav>
+      <div class="fcol f3">
+        <h4>Verified Retailers</h4>
+        <ul>
+          <li>Apple Store India</li><li>Amazon.in Authorised</li><li>Flipkart SuperCom</li><li>Croma Resellers</li><li>Reliance Digital Stores</li>
+        </ul>
+      </div>
+      <div class="fcol f4">
+        <h4>Market Intelligence</h4>
+        <ul>
+          <li class="mi"><i style="background:var(--accent)"></i>Exchange Rate: Live Multi-Store Index</li>
+          <li class="mi"><i style="background:var(--glow)"></i>GST 18% Compliant Estimations</li>
+          <li class="mi"><i style="background:#737378"></i>Bank Cashback Trackers</li>
+        </ul>
+      </div>
+    </div>
+    <div class="fbottom">
+      <div class="legal">
+        <p>Disclaimer: iPhone, Apple, Dynamic Island, ProMotion, Retina, and A-Series Bionic/Pro chips are registered trademarks of Apple Inc. iPhone Guide is an independent consumer comparison utility and is neither affiliated with, endorsed by, nor sponsored by Apple Inc. Retail prices reflect tracked Indian MRP and street discount estimations.</p>
+        <p>© 2025 iPhone Guide Platform. All rights reserved. Crafted for precision hardware intelligence.</p>
+      </div>
+      <div class="links"><span class="reg">Region: IN (₹)</span><a href="#">Privacy Policy</a><a href="#">Terms of Usage</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // Local-first images with remote fallback (Figma temp URLs expire after ~7 days; run download-assets.sh to localize)
+  document.querySelectorAll('img[data-remote]').forEach(function(img){
+    img.addEventListener('error', function(){ if(img.src !== img.dataset.remote){ img.src = img.dataset.remote; } }, {once:true});
+  });
+
+  // Mobile menu
+  var menuBtn = document.getElementById('menuBtn'), nav = document.getElementById('nav');
+  menuBtn.addEventListener('click', function(){
+    var open = nav.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', open);
+  });
+  nav.addEventListener('click', function(e){ if(e.target.tagName === 'A'){ nav.classList.remove('open'); menuBtn.setAttribute('aria-expanded','false'); } });
+
+  // Active nav link on scroll
+  var links = [].slice.call(nav.querySelectorAll('a'));
+  var map = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){
+          var i = map.indexOf(en.target);
+          links.forEach(function(a,k){ a.classList.toggle('active', k===i); });
+        }
+      });
+    }, {rootMargin:'-45% 0px -50% 0px'});
+    map.forEach(function(s){ if(s) io.observe(s); });
+  }
+
+  // Generation filter tabs
+  var tabs = [].slice.call(document.querySelectorAll('.tab')), cats = [].slice.call(document.querySelectorAll('.cat'));
+  tabs.forEach(function(t){
+    t.addEventListener('click', function(){
+      tabs.forEach(function(x){ x.setAttribute('aria-pressed', x===t); });
+      var f = t.dataset.filter;
+      cats.forEach(function(c){ c.hidden = !(f==='all' || c.dataset.cat===f); });
+    });
+  });
+
+  // Matchmaker
+  var budget = document.getElementById('budget'), out = document.getElementById('budgetOut');
+  var recName = document.getElementById('recName'), recWhy = document.getElementById('recWhy');
+  var state = {priority:'camera', size:'standard'};
+  function inr(n){ return '₹' + n.toLocaleString('en-IN'); }
+  function k(n){ return '₹' + Math.round(n/1000) + 'k'; }
+  var perk = {
+    camera:'48MP camera', gaming:'smooth gaming performance', daily:'reliable everyday performance', battery:'all-day battery life'
+  };
+  function recommend(){
+    var b = +budget.value, p = state.priority, s = state.size, name, why;
+    if(b >= 100000){
+      name = s==='max' ? 'iPhone 16 Pro Max' : 'iPhone 16 Pro';
+      why = 'Fits your ' + k(b) + ' budget with ' + (p==='camera' ? '5x telephoto & ProRes video' : p==='gaming' ? 'A18 Pro graphics & ray tracing' : p==='battery' ? 'up to 27 hrs video playback' : 'flagship speed & titanium build') + '.';
+    } else if(b >= 55000){
+      name = 'iPhone 15 (128GB)';
+      why = 'Matches your ' + k(b) + ' budget with ' + (p==='camera' ? '48MP camera & USB-C portability' : p==='gaming' ? 'A16 Bionic power & USB-C' : p==='battery' ? 'up to 20 hrs video & USB-C charging' : 'Dynamic Island & USB-C portability') + '.';
+    } else if(b >= 28500){
+      name = 'iPhone 13 (128GB)';
+      why = 'Within your ' + k(b) + ' budget, offering ' + perk[p] + (b >= 42999 ? ' at ' + inr(42999) + ' new.' : ' via certified refurbished at ' + inr(28500) + '.');
+    } else if(b >= 20000 && s !== 'compact'){
+      name = 'iPhone 12 (Certified Refurbished)';
+      why = 'Fits your ' + k(b) + ' budget with ' + perk[p] + ' at refurbished pricing. Check battery health first.';
+    } else {
+      name = 'iPhone 6 Classic';
+      why = 'A collector-friendly pick for your ' + k(b) + ' budget' + (s==='compact' ? ' with a compact handheld size.' : '.') + ' Check iOS support and battery condition.';
+    }
+    recName.textContent = name; recWhy.textContent = why;
+  }
+  budget.addEventListener('input', function(){ out.textContent = inr(+budget.value); recommend(); });
+  document.querySelectorAll('.opts').forEach(function(g){
+    var btns = [].slice.call(g.querySelectorAll('.opt'));
+    btns.forEach(function(b){
+      b.addEventListener('click', function(){
+        btns.forEach(function(x){ x.setAttribute('aria-pressed', x===b); });
+        state[g.dataset.group] = b.dataset.v; recommend();
+      });
+    });
+  });
+
+  // Forms (front-end validation only — wire to your backend)
+  function wire(form, msg){
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var input = form.querySelector('input'), ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value.trim());
+      msg.textContent = ok ? 'Thanks! You\'re on the list for price-drop and launch alerts.' : 'Enter a valid email address, for example name@example.com.';
+      msg.style.color = ok ? 'var(--accent)' : '#ffb4ab';
+      if(ok) form.reset();
+    });
+  }
+  wire(document.getElementById('newsForm'), document.querySelector('#newsForm .form-msg'));
+  wire(document.getElementById('footForm'), document.getElementById('footMsg'));
+})();
+</script>
+</body>
+</html>
